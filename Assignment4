@@ -1,0 +1,28 @@
+def file_read_write(studentrecord, modified_studentrecord):
+    try:
+        with open(studentrecord, 'r') as infile:
+            content = infile.read()
+        modified_content = modify_content(content)
+        with open(modified_studentrecord, 'w') as outfile:
+            outfile.write(modified_content)
+        print('Student record Modified')
+    except FileNotFoundError:
+        print('Error: The student record does not exist.')
+    except IOError:
+        print('Error: Could not read/write the file.')
+
+def ask_and_read_file():
+    try:
+        with open('studentrecord', 'r') as f:
+            content = f.read()
+        print("File content successfully read:")
+        print(content)
+    except FileNotFoundError:
+        print('Error: The studentrecord does not exist')
+    except IOError:
+        print('Error: Could not read the student record')
+
+if __name__ == "__main__":
+    ask_and_read_file() #to read student record
+
+    file_read_write('studentrecord', ' modified_studentrecord')
